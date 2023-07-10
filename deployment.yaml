@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-display-overview
+  labels:
+    name: deployment-overview
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: deployment-overview
+  template:
+    metadata:
+      labels:
+        name: deployment-overview
+    spec:
+      containers:
+      - name: nginx
+        image: 643746770507.dkr.ecr.eu-central-1.amazonaws.com/overview:v3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
